@@ -31,6 +31,16 @@ export class HomePage {
     });
     toast.present();
 
+    let message = "Grocery Item - Name: " + item.name + " - Quantity: " + item.quantity;
+    let subject = "Shared via Groceries app";
+
+    this.socialSharing.share().then(() => {
+      console.log("Shared Successfully");
+    }).catch(() => {
+      console.error("Error while sharing", error);
+
+    });
+
   }
 
   removeItem(item){
