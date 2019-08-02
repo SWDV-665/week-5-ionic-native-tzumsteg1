@@ -22,12 +22,23 @@ export class HomePage {
   loadItems(){
     return this.dataService.getItems();
   }
+
+  shareItem(item){
+    console.log("Sharing Item -", item)
+    const toast = this.toastCtrl.create({
+      message = 'Sharing Item - ' + item.name + "...",
+      duration: 3000
+    });
+    toast.present();
+
+  }
+
   removeItem(item){
     console.log("Removing Item -", item)
     const toast = this.toastCtrl.create({
       message = 'Removing Item - ' + item.name + "...",
       duration: 3000
-    })
+    });
     toast.present();
 
     this.dataService.removeItem(index);
@@ -39,7 +50,7 @@ export class HomePage {
     const toast = this.toastCtrl.create({
       message = 'Editing Item - ' + item.name + "...",
       duration: 3000
-    })
+    });
     toast.present();
     this.inputDialogService.showPrompt(item, index);
   }
